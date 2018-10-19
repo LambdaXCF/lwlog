@@ -1,0 +1,13 @@
+{
+  "name": "lwlog",
+  "description": "A really lightweight logger",
+  "author": "fixed_",
+  "main": "app.js",
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/node": "^10.12.0"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}
