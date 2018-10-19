@@ -51,6 +51,11 @@ export default class Logger {
         return this;
     }
 
+    public info:    (data: string) => Logger = (data: string) => this.log(Levels.INFO   , data);
+    public warn:    (data: string) => Logger = (data: string) => this.log(Levels.WARN   , data);
+    public success: (data: string) => Logger = (data: string) => this.log(Levels.SUCCESS, data);
+    public trace:   (data: string) => Logger = (data: string) => this.log(Levels.TRACE  , data);
+
 }
 
 

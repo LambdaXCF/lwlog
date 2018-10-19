@@ -1,13 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var stream = require("stream");
 var chalk = require('chalk');
-var writer = new stream.Readable({ read: function () { } });
 var scopePadding = {};
 var namesPadding = 0;
 var Logger = /** @class */ (function () {
     function Logger(scopes, pad) {
         if (pad === void 0) { pad = false; }
+        var _this = this;
+        this.info = function (data) { return _this.log(exports.Levels.INFO, data); };
+        this.warn = function (data) { return _this.log(exports.Levels.WARN, data); };
+        this.success = function (data) { return _this.log(exports.Levels.SUCCESS, data); };
+        this.trace = function (data) { return _this.log(exports.Levels.TRACE, data); };
         this.scopes = scopes;
         for (var i = 0; i < scopes.length; i++) {
             if (!scopePadding[i])
@@ -16,9 +19,6 @@ var Logger = /** @class */ (function () {
                 scopePadding[i] = scopes[i].length;
         }
         this.pad = pad;
-        /*for(let s of scopes)
-            if(s.length > scopePadding)
-                scopePadding = s.length;*/
     }
     Logger.scope = function () {
         var scopes = [];
@@ -70,13 +70,4 @@ for (var _i = 0, _a = Object.keys(exports.Levels); _i < _a.length; _i++) {
     if (exports.Levels[i].name.length > namesPadding)
         namesPadding = exports.Levels[i].name.length;
 }
-var logger1 = Logger.scope("Database", "Web");
-var logger2 = Logger.scope('Webserver', "Test");
-logger1
-    .log(exports.Levels.INFO, "Test")
-    .log(exports.Levels.WARN, "Connection to database failed")
-    .error(new Error('ENOENT, no such file or directory \'log\''));
-logger2
-    .log(exports.Levels.SUCCESS, "Successfully reconnected to database")
-    .log(exports.Levels.ERROR, "ENOENT");
 //# sourceMappingURL=app.js.map
