@@ -4,9 +4,9 @@ let scopePadding: {[key:number]:number} = {};
 
 let namesPadding: number = 0;
 
-export default class Logger {
+export class Logger {
 
-    private scopes: string[];
+    scopes: string[];
     pad: boolean;
 
     private constructor(scopes: string[], pad = false) {

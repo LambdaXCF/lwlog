@@ -49,7 +49,7 @@ var Logger = /** @class */ (function () {
     };
     return Logger;
 }());
-exports.default = Logger;
+exports.Logger = Logger;
 var LogLevel = /** @class */ (function () {
     function LogLevel(name, color, icon) {
         this.color = color;
